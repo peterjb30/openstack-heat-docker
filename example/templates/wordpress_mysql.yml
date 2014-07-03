@@ -7,7 +7,7 @@ Mappings: {}
 
 Resources:
     Blog:
-        Type: OS::Heat::Docker
+        Type: DockerInc::Docker::Container
         Properties:
             Image: samalba/wordpress
             Env:
@@ -16,7 +16,7 @@ Resources:
                 - {"Fn::Join": ["=", ["DB_PASSWORD", {"Fn::GetAtt": ["Database", "LogsHead"]}]]}
 
     Database:
-        Type: OS::Heat::Docker
+        Type: DockerInc::Docker::Container
         Properties:
             Image: samalba/mysql
 
