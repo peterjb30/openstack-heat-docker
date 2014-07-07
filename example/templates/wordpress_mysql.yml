@@ -6,7 +6,7 @@ Parameters: {}
 
 Mappings: {}
 
-Resources:
+resources:
     my_instance:
         type: OS::Nova::Server
         properties:
