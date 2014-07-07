@@ -11,5 +11,5 @@ Resources:
     my_docker_container:
          Type: DockerInc::Docker::Container
          Properties:
-            docker_endpoint:  Get_Attr: [my_instance, first_address] 
+            docker_endpoint: {Get_Attr: [my_instance, first_address]} 
             image: CirrOS-0.3.0
