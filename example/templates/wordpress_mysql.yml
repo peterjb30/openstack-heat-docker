@@ -12,5 +12,5 @@ Resources:
     my_docker_container:
          Type: DockerInc::Docker::Container
          Properties:
-            docker_endpoint: { "get_attr": ["my_instance", "NetworkIp"] }
+            docker_endpoint: {"get_attr": ["my_instance", "NetworkIp"]}
             image: CirrOS-0.3.0
