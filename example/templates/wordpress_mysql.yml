@@ -1,15 +1,15 @@
 #!highlight yaml
 HeatTemplateFormatVersion: '2012-12-12'
 
-resources:
-    my_instance:
-        type: OS::Nova::Server
-        properties:
-            image: CirrOS-0.3.0
-            flavor: m1.large
-            user_data: #include https://get.docker.io
-    my_docker_container:
-         type: DockerInc::Docker::Container
-         properties:
-            docker_endpoint: { get_attr: [my_instance, first_address] }
-            image: CirrOS-0.3.0
+Resources:
+    My_Instance:
+        Type: OS::Nova::Server
+        Properties:
+            Image: CirrOS-0.3.0
+            Flavor: m1.large
+            User_Data: #include https://get.docker.io
+    My_Docker_Container:
+         Type: DockerInc::Docker::Container
+         Properties:
+            Docker_Endpoint: { Get_Attr: [my_instance, first_address] }
+            Image: CirrOS-0.3.0
