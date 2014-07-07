@@ -5,7 +5,6 @@ Resources:
     my_instance:
         Type: OS::Nova::Server
         Properties:
-            Key_Name: peter_key
             image: ubuntu-precise
             flavor: m1.large
             user_data: #include https://get.docker.io
