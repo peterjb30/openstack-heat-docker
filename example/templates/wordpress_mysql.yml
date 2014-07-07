@@ -5,11 +5,11 @@ Resources:
     my_instance:
         Type: OS::Nova::Server
         Properties:
-            image: ubuntu-precise
+            image: CirrOS-0.3.0
             flavor: m1.large
             user_data: #include https://get.docker.io
     my_docker_container:
          Type: DockerInc::Docker::Container
          Properties:
             docker_endpoint: { get_attr: [my_instance, first_address] }
-            image: cirros
+            image: CirrOS-0.3.0
