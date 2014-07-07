@@ -4,13 +4,13 @@ HeatTemplateFormatVersion: '2012-12-12'
 
 Resources:
     my_instance:
-        type: OS::Nova::Server
-        properties:
+        Type: OS::Nova::Server
+        Properties:
             image: CirrOS-0.3.0
             flavor: m1.large
             user_data: #include https://get.docker.io
     my_docker_container:
-         type: DockerInc::Docker::Container
-         properties:
+         Type: DockerInc::Docker::Container
+         Properties:
             docker_endpoint: { "get_attr": ["my_instance", "NetworkIp"] }
             image: CirrOS-0.3.0
