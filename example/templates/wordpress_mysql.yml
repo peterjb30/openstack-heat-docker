@@ -1,31 +1,16 @@
 #!highlight yaml
 HeatTemplateFormatVersion: '2012-12-12'
 
-Parameters: {}
-
-Mappings: {}
-
 Resources:
-    Blog:
+    my_instance:
         Type: OS::Nova::Server
         Properties:
-            Image: samalba/wordpress
-            Env:
-                - {"Fn::Join": ["=", ["DB_HOSTNAME", {"Fn::GetAtt": ["Database", "NetworkIp"]}]]}
-                - {"Fn::Join": ["=", ["DB_PORT", {"Fn::GetAtt": ["Database", "NetworkTcpPorts"]}]]}
-                - {"Fn::Join": ["=", ["DB_PASSWORD", {"Fn::GetAtt": ["Database", "LogsHead"]}]]}
-
-    Database:
-        Type: OS::Nova::Server
-        Properties:
-            Image: samalba/mysql
-
-Outputs:
-    BlogURL:
-        Value:
-            {"Fn::Join": ["",
-                ["http://",
-                {"Fn::GetAtt": ["Blog", "NetworkIp"]}, ":",
-                {"Fn::GetAtt": ["Blog", "NetworkTcpPorts"]}, "/"]
-            ]}
-        Description: Blog URL
+            Key_Name: peter_key
+            image: ubuntu-precise
+            flavor: m1.large
+            user_data: #include https://get.docker.io
+    my_docker_container:
+         Type: DockerInc::Docker::Container
+         Properties:
+            docker_endpoint: { get_attr: [my_instance, first_address] }
+            image: cirros
