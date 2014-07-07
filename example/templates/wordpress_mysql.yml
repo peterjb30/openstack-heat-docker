@@ -1,6 +1,11 @@
 #!highlight yaml
 HeatTemplateFormatVersion: '2012-12-12'
 
+
+Parameters: {}
+
+Mappings: {}
+
 Resources:
     my_instance:
         Type: OS::Nova::Server
